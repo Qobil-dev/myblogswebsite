@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 
@@ -11,6 +11,8 @@ class CompanyInfo(models.Model):
 
     def __str__(self):
         return self.name
+    def slug(self):
+        return slugify(self.name)
 
 class CartInfo(models.Model):
     company_info = models.ForeignKey(CompanyInfo, on_delete=models.SET_NULL, blank=True, null=True)
@@ -23,7 +25,7 @@ class CartInfo(models.Model):
 
 class Products(models.Model):
     name = models.CharField(max_length=200, null=True)
-    photo = models.ImageField(null=False, blank=True, upload_to='mycomp')
+    photo = models.ImageField(null=False, blank=True, upload_to='media')
     last_update = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
@@ -38,7 +40,7 @@ class Products(models.Model):
         return url
 
 class Partners(models.Model):
-    logo = models.ImageField(null=True, blank=True, upload_to='mycomp')
+    logo = models.ImageField(null=True, blank=True, upload_to='media')
     name = models.CharField(max_length=200, null=True)
     last_update = models.DateTimeField(auto_now_add=True)
 

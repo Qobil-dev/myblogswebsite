@@ -1,0 +1,6 @@
+DEBUG=on
+dbname=info
+dbuser=postgres
+dbpassword=root
+dbhost=localhost
+dbport=5432

@@ -1,7 +1,10 @@
 {% extends 'main.html' %}
 {% load static %}
 {% block content %}
-	<header>
+
+
+
+<header>
 			<div class="container">
 				<a href="#" class="logo">MINNESOTA TECHNOLOGY</a>
 				<ul class="menu">
@@ -46,42 +49,31 @@
 	</div>
 	<div class="about" id="about">
 		<div class="container">
-			<div class="btitle">About</div>
-			<p>There are two mainstream activities - rolled steel supply to and <br> steelworks manufacture for the market of Uzbekistan. </p>
+			<div class="btitle">{{ info.name }}</div>
+			<p>{{ info.info }}</p>
 			<a href="#" class="more">more</a>
 			<div class="about_slide">
-				<div class="about_slide-title">We are in a position to offer wide range of sheet, section-shaped and high-quality rolled metal products. Besides the rolled metal, we produce steelworks, namely:
+				<div class="about_slide-title">{{ info.short_info }}
 				</div>
 				<div class="about_slide-list">
 					<div class="about_slide-list-item">
 						<div class="box">
-							<img src="img/shed.svg" alt="">
+							<img src="{% static 'img/shed.svg' %}" alt="">
 							Sheds for motor vehicles, entrance facilities and recreation zones
 						</div>
 						<div class="box">
-							<img src="img/fence.svg" alt="">
+							<img src="{% static 'img/fence.svg' %}" alt="">
 							Fences, enclosing structures and grating
 						</div>
+						{% for cart in carts %}
 						<div class="box">
-							<img src="img/gate.svg" alt="">
-							Gates (hinged, rolling), wicket gates and doors
+							<img src="{% static 'img/gate.svg' %}" alt="">
+							{{ cart_info.info }}
 						</div>
+						{% endfor %}
 					</div>
 
-					<div class="about_slide-list-item">
-						<div class="box">
-							<img src="img/shed.svg" alt="">
-							Steel-framed ladders
-						</div>
-						<div class="box">
-							<img src="img/fence.svg" alt="">
-							Handrails, rail guards and balcony railing
-						</div>
-						<div class="box">
-							<img src="img/gate.svg" alt="">
-							Landscape gardening designs (shelter sheds, benches, see-saws, bridges, etc.)
-						</div>
-					</div>
+
 					<div class="about_slide-list-item">
 						<div class="box">
 							<img src="img/shed.svg" alt="">
@@ -118,115 +110,29 @@
 		<div class="container">
 			<div class="btitle">Partners</div>
 			<div class="partners_list">
+				{% for partner in partners %}
 				<div class="partners_list-item">
-					<img src="img/Arcelor_Mittal.svg.png" alt="">
+					<img src="/media/{{ partner.logo }}" alt="">
 				</div>
-				<div class="partners_list-item">
-					<img src="img/Logo-evraz.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/logo-nlmk.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/mmk-logo.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/%D0%97%D0%A1%D0%9C%D0%9A.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/Arcelor_Mittal.svg.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/Logo-evraz.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/logo-nlmk.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/mmk-logo.png" alt="">
-				</div>
-				<div class="partners_list-item">
-					<img src="img/%D0%97%D0%A1%D0%9C%D0%9A.png" alt="">
-				</div>
+				{% endfor %}
 			</div>
 		</div>
 	</div>
+
 	<div class="product" id="products">
 		<div class="container">
 			<div class="btitle">Products</div>
 			<div class="product_list">
+				{% for products in product %}
 				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/2017-02-14-21-21_armatura-riflenaya-stopka_293x195_5dc.jpg)"></div>
+					<div class="product_list-item-img" style="background-image: url(media/{{ products.photo }})"></div>
 					<div class="product_list-item-body">
-						<a href="#">REINFORCEMENT STEEL А-III,
-GOST 5781-82, RUSSIA</a>
+						<a href="#">{{ products.name }}</a>
 					</div>
 				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p1.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">EQUAL ANGLE STEEL GOST 8509-93, RUSSIA</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p2.webp)"></div>
-					<div class="product_list-item-body">
-						<a href="#">STEEL CHANNEL, GOST 8240-97, 535-2005, RUSSIA</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p3.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">HOT-ROLLED STEEL SHEET, GOST 16523-97, 380-2005, 19903-2015, 1050-88, 14637-89, 19281-89, RUSSIA</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p4.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">CORRUGATED STEEL SHEET, GOST 8568-77, RUSSIA</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p5.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">COLD-ROLLED STEEL SHEET, GOST 16523-97;1050-2013;19904-90, KAZAKHSTAN</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p6.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">GALVANISED STEEL SHEET,  GOST  14918-80;1050-2013;19904-90, KAZAKHSTAN</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p7.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">DOUBLE-T IRON,  normal, medium-flange, GOST СТО АСЧМ 20-93, 26020-83, 8239-89, RUSSIA</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p8.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">DOUBLE-T IRON,  monorail</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p9.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">DOUBLE-T IRON, column</a>
-					</div>
-				</div>
-				<div class="product_list-item">
-					<div class="product_list-item-img" style="background-image: url(img/p10.jpg)"></div>
-					<div class="product_list-item-body">
-						<a href="#">DOUBLE-T IRON, wide-flange</a>
-					</div>
-				</div>
+				{% endfor %}
 			</div>
-			<div class="s3"></div>
-			<div class="s4"></div>
 		</div>
-		<div class="s5"></div>
 	</div>
 	<div class="quest" id="contacts">
 		<div class="container">
@@ -241,14 +147,16 @@ GOST 5781-82, RUSSIA</a>
 	<footer>
 		<div class="container">
 			<div class="left">
-				Suite 102, Ground Floor, Blake Building, Corner Eyre & <br> Hutson Streets,Belize City, Belize
+				{{ contact.name }}<br>
+				{{ contact.address }}<br>
+				{{ contact.phone }}
 			</div>
 			<div class="center">
 				<b>MINNESOTA <br> TECHNOLOGY LTD</b>
 				Copyright @ 2019. Developed by MD.uz
 			</div>
 			<ul class="social">
-				<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+				<li><a href="{{ social_media.link }}"><i class="fa fa-facebook"></i></a></li>
 				<li><a href="#"><i class="fa fa-instagram"></i></a></li>
 				<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
 				<li><a href="#"><i class="fa fa-twitter"></i></a></li>
