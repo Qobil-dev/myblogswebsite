@@ -29,6 +29,14 @@ class Products(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def imageUrl(self):
+        try:
+            url = self.photo.url
+        except:
+            url = ''
+        return url
+
 class Partners(models.Model):
     logo = models.ImageField(null=True, blank=True, upload_to='mycomp')
     name = models.CharField(max_length=200, null=True)
